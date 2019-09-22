@@ -1,0 +1,47 @@
+﻿@model JobDescriptionTagger.Models.UserTagModel
+@{
+    ViewBag.Title = "Enter Descriptions";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>A Quick 'How To'</h4>
+            </div>
+            <div class="panel-body">
+                <p>
+                    This page mimicks the interface a user would see after signing up.
+                </p>
+                <p>
+                    Logins are complicated and unnecessary for a prototype, so associate tags with users by simply entering usernames.
+                </p>
+                <p>
+                    For each entry, enter a brief description of the username you're 'signing up'.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Sign Up</h4>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Index", "Main", null, FormMethod.Post, new { @class = "" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Username)
+                        @Html.TextBoxFor(x => x.Username, new { @class = "form-control col-md-12" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Description)
+                        @Html.TextBoxFor(x => x.Description, new { @class = "form-control col-md-12" })
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
