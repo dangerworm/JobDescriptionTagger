@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
 using JobDescriptionTagger.Database;
 
 namespace JobDescriptionTagger.Models
 {
     public class TagsUsersModel
     {
-        public IEnumerable<TagUsersModel> TagData { get; set; }
+        public ICollection<TagUsersModel> TagData { get; set; }
 
         public TagsUsersModel()
         {
@@ -14,7 +14,12 @@ namespace JobDescriptionTagger.Models
 
         public TagsUsersModel(IEnumerable<Tag> value)
         {
-            TagData = value.Select(x => new TagUsersModel(x));
+            TagData = new Collection<TagUsersModel>();
+
+            foreach (var tag in value)
+            {
+                TagData.Add(new TagUsersModel(tag));
+            }
         }
     }
 }

@@ -15,10 +15,10 @@ namespace JobDescriptionTagger.Services
 
         public ServiceResult<TagsUsersModel> GetCommonTags(bool includeIgnored)
         {
-            var usefulTags = _dataModel.Tags.AsQueryable();
+            var usefulTags = _dataModel.Tags.ToArray();
             if (!includeIgnored)
             {
-                usefulTags = usefulTags.Where(x => !x.Ignore);
+                usefulTags = usefulTags.Where(x => !x.Ignore).ToArray();
             }
 
             if (!usefulTags.Any())
