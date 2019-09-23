@@ -1,0 +1,30 @@
+﻿@model IEnumerable<JobDescriptionTagger.Models.TagModel>
+
+@if (Model.Any())
+{
+    <table class="table table-striped table-responsive table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>TagName</th>
+            <th>User Count</th>
+            <th>Ignore</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var tag in Model.OrderByDescending(x => x.TagCount))
+        {
+            <tr>
+                <td>@tag.TagId</td>
+                <td>@tag.TagName</td>
+                <td>@tag.TagCount</td>
+                <td>@Html.CheckBoxFor(x => tag.Ignore)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No records returned.</p>
+}

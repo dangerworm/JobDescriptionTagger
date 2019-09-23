@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using JobDescriptionTagger.Database;
 using JobDescriptionTagger.Models;
@@ -9,10 +10,12 @@ namespace JobDescriptionTagger.Controllers
     public class MainController : Controller
     {
         private readonly UserTagService _userTags;
+        private readonly TagService _tags;
 
         public MainController()
         {
             _userTags = new UserTagService();
+            _tags = new TagService();
         }
 
         [HttpGet]
@@ -28,16 +31,34 @@ namespace JobDescriptionTagger.Controllers
         {
             _userTags.SaveTags(model);
 
-            model.Description = string.Empty;
+            ModelState.Clear();
 
-            return View(model);
+            return Index();
         }
+
+        //public ActionResult Users()
+        //{
+        //    //var result = _users.GetAll();
+
+        //    //return View(result.Value);
+        //}
 
         public ActionResult Tags()
         {
             ViewBag.Message = "See all tags generated.";
 
-            return View();
+            var result = _tags.GetTags(includeIgnored: true);
+
+            return View(result.Value);
+        }
+
+        public ActionResult TagLinks()
+        {
+            ViewBag.Message = "See which tags are common between users.";
+
+            var result = _userTags.GetCommonTags(includeIgnored: true);
+
+            return View(result.Value);
         }
 
         public ActionResult Inferences()

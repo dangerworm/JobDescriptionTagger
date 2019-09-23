@@ -158,9 +158,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserTagsModel.cs" />
+    <Compile Include="Models\TagModel.cs" />
+    <Compile Include="Models\TagsModel.cs" />
+    <Compile Include="Models\TagsUsersModel.cs" />
+    <Compile Include="Models\UserTagModel.cs" />
+    <Compile Include="Models\TagUsersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ServiceResult.cs" />
+    <Compile Include="Services\ServiceResultTyped.cs" />
+    <Compile Include="Services\TagService.cs" />
     <Compile Include="Services\UserTagService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +206,8 @@
     <Content Include="Views\Main\Tags.cshtml" />
     <Content Include="Views\Main\Inferences.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
+    <Content Include="Views\Main\_TagsTable.cshtml" />
+    <Content Include="Views\Main\TagLinks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

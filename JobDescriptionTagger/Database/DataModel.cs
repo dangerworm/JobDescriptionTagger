@@ -20,13 +20,13 @@ namespace JobDescriptionTagger.Database
                 .IsUnicode(false);
 
             modelBuilder.Entity<Tag>()
-                .HasMany(e => e.Inferences)
-                .WithOptional(e => e.Tag)
+                .HasMany(e => e.SourceInferences)
+                .WithOptional(e => e.SourceTag)
                 .HasForeignKey(e => e.SourceTagId);
 
             modelBuilder.Entity<Tag>()
-                .HasMany(e => e.Inferences1)
-                .WithOptional(e => e.Tag1)
+                .HasMany(e => e.TargetInferences)
+                .WithOptional(e => e.TargetTag)
                 .HasForeignKey(e => e.TargetTagId);
 
             modelBuilder.Entity<Tag>()

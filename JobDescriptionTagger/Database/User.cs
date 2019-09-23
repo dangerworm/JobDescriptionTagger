@@ -14,8 +14,8 @@ namespace JobDescriptionTagger.Database
             Tags = new HashSet<Tag>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int UserId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? UserId { get; set; }
 
         [StringLength(50)]
         public string Username { get; set; }

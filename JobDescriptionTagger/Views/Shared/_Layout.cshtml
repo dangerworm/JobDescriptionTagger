@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,7 +23,8 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("User Description", "Index", "Main")</li>
                     <li>@Html.ActionLink("Tags", "Tags", "Main")</li>
-                    <li>@Html.ActionLink("Inferences", "Inferences", "Main")</li>
+                    <li>@Html.ActionLink("User-Tag Links", "TagLinks", "Main")</li>
+                    @*<li>@Html.ActionLink("Inferences", "Inferences", "Main")</li>*@
                 </ul>
             </div>
         </div>
@@ -38,6 +40,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

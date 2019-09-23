@@ -1,0 +1,43 @@
+﻿@model JobDescriptionTagger.Models.TagsUsersModel
+@{
+    ViewBag.Title = "Tag-User Links";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>Tag-User Links</h4>
+            </div>
+            <div class="panel-body">
+                <p>
+                    This table lists the tags that are common between users, and
+                    which users have described themselves using that tag.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var tag in Model.TagData)
+    {
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>@tag.Tag.TagName</h4>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        @foreach (var username in tag.Usernames)
+                        {
+                            <li>@username</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</div>
